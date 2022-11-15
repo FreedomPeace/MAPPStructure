@@ -13,19 +13,20 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/business_module" />
             <option value="$PROJECT_DIR$/business_module/community" />
+            <option value="$PROJECT_DIR$/business_module/im_login" />
             <option value="$PROJECT_DIR$/business_out_interface_api" />
             <option value="$PROJECT_DIR$/business_out_interface_api/comutity_out_api" />
-            <option value="$PROJECT_DIR$/library_business" />
-            <option value="$PROJECT_DIR$/library_business/im_ble_charge" />
-            <option value="$PROJECT_DIR$/library_business/im_login" />
-            <option value="$PROJECT_DIR$/library_business/im_msg" />
-            <option value="$PROJECT_DIR$/library_business/im_pay" />
-            <option value="$PROJECT_DIR$/library_core" />
-            <option value="$PROJECT_DIR$/library_core/im_core" />
-            <option value="$PROJECT_DIR$/library_core/im_ui_kit" />
-            <option value="$PROJECT_DIR$/library_core/network_api" />
-            <option value="$PROJECT_DIR$/library_core/picture_selector" />
-            <option value="$PROJECT_DIR$/library_core/upload_log_api" />
+            <option value="$PROJECT_DIR$/business_out_interface_api/login_out_api" />
+            <option value="$PROJECT_DIR$/library_self_core" />
+            <option value="$PROJECT_DIR$/library_self_core/im_core_base" />
+            <option value="$PROJECT_DIR$/library_self_core/im_ui_kit" />
+            <option value="$PROJECT_DIR$/library_self_core/network_api" />
+            <option value="$PROJECT_DIR$/library_self_core/picture_selector" />
+            <option value="$PROJECT_DIR$/library_self_core/upload_log_api" />
+            <option value="$PROJECT_DIR$/library_third_business" />
+            <option value="$PROJECT_DIR$/library_third_business/im_ble_charge" />
+            <option value="$PROJECT_DIR$/library_third_business/im_msg" />
+            <option value="$PROJECT_DIR$/library_third_business/im_pay" />
             <option value="$PROJECT_DIR$/test" />
           </set>
         </option>

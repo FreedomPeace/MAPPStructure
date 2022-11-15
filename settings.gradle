@@ -18,24 +18,27 @@ include ':app'
 //业务模块，输出的api
 include ':business_out_interface_api'
 include ':business_out_interface_api:comutity_out_api'
+include ':business_out_interface_api:login_out_api'
 //业务模块
 include ':business_module'
 include ':business_module:community'
+include ':business_module:im_login'
 
-//核心api库
-include ':library_core'
-include ':library_core:network_api'
-include ':library_core:upload_log_api'
-include ':library_core:im_ui_kit'//ui 库
-include ':library_core:picture_selector'
-include ':library_core:im_core'
+//自家核心api类库
+include ':library_self_core'
+include ':library_self_core:network_api'
+include ':library_self_core:upload_log_api'
+include ':library_self_core:im_ui_kit'//ui 库
+include ':library_self_core:picture_selector'
+include ':library_self_core:im_core_base'
 
-//业务工具模块
-include ':library_business'
-include ':library_business:im_ble_charge'
-include ':library_business:im_pay'
-include ':library_business:im_msg'
-include ':library_business:im_login'
+//第三方业务工具模块
+include ':library_third_business'
+include ':library_third_business:im_ble_charge'
+include ':library_third_business:im_pay'
+include ':library_third_business:im_msg'
+
 
 
 include ':test'
+
