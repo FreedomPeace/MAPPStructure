@@ -1,0 +1,41 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "My Application"
+include ':app'
+
+//业务模块，输出的api
+include ':business_out_interface_api'
+include ':business_out_interface_api:comutity_out_api'
+//业务模块
+include ':business_module'
+include ':business_module:community'
+
+//核心api库
+include ':library_core'
+include ':library_core:network_api'
+include ':library_core:upload_log_api'
+include ':library_core:im_ui_kit'//ui 库
+include ':library_core:picture_selector'
+include ':library_core:im_core'
+
+//业务工具模块
+include ':library_business'
+include ':library_business:im_ble_charge'
+include ':library_business:im_pay'
+include ':library_business:im_msg'
+include ':library_business:im_login'
+
+
+include ':test'
