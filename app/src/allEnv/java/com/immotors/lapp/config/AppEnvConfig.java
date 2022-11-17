@@ -8,10 +8,6 @@ import com.framework.core_azp.BaseEnvConfig;
 import com.framework.exp.BuildConfig;
 
 /**
- * @ClassName: AppEnvConfig
- * @Description: APP环境
- * @Author: sligner
- * @Date: 2021/4/27 20:23
  */
 public class AppEnvConfig {
     private static BaseEnvConfig config;
