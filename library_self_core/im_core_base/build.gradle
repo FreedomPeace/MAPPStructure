@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
 }
 
 android {
@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.framework.core_azp"
+//        applicationId "com.framework.core_azp"
         minSdk 21
         targetSdk 32
         versionCode 1

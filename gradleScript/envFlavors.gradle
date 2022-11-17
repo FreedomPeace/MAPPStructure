@@ -1,0 +1,75 @@
+android {
+    defaultConfig {
+        flavorDimensions "env"
+    }
+    sourceSets {
+        main {
+        }
+
+        dev {
+            java.srcDirs = ['src/allEnv/java']
+            res.srcDirs += ['src/allEnv/res']
+        }
+
+        sit {
+            java.srcDirs = ['src/allEnv/java']
+            res.srcDirs += ['src/allEnv/res']
+        }
+
+        uat {
+            java.srcDirs = ['src/allEnv/java']
+            res.srcDirs += ['src/allEnv/res']
+        }
+
+//        prodDebug {
+//            java.srcDirs = ['src/allEnv/java']
+//            res.srcDirs += ['src/allEnv/res']
+//        }
+
+        prod {
+            java.srcDirs += ["src/prodOnly/java", "${prodReleaseGeneratedDir.absolutePath}"]
+            res.srcDirs += 'src/prodOnly/res'
+        }
+    }
+    /**
+     * 拷贝ProConfig.java配置到prodRelease的generated/immotors下面
+     */
+    tasks.register('copyEnvConfig', Copy) {
+        group = "immotors"
+        def devProdConfigFile = new File(rootDir, "app/src/allEnv/java/com/immotors/lapp/config/ProConfig.java")
+        if (devProdConfigFile.exists()) {
+            def outDir = new File("$prodReleaseGeneratedDir", "com/immotors/lapp/config")
+            def logInfo = "> copyEnvConfig: Copy ${devProdConfigFile.absolutePath} into ${outDir.absolutePath} ..."
+            description = "$logInfo"
+            logger.debug("$logInfo")
+            from devProdConfigFile
+            into outDir
+        }
+    }
+    productFlavors {
+        dev {
+            dimension "env"
+        }
+
+        sit {
+            dimension "env"
+        }
+
+        uat {
+            dimension "env"
+        }
+
+        prod {
+            dimension "env"
+        }
+    }
+}
+boolean isProdVersion() {
+    return project.gradle.startParameter.taskNames.any { it.toLowerCase().contains('prod') }
+}
+def getProdReleaseGeneratedDir() {
+    return new File(layout.buildDirectory.dir("generated").get().asFile, "immotors")
+}
+if (isProdVersion()) {
+    preBuild.dependsOn copyEnvConfig
+}

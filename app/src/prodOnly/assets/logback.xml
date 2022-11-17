@@ -1,0 +1,29 @@
+<configuration>
+    <!--    <property name="LOG_DIR" value="/sdcard/log" />-->
+    <property name="LOG_DIR" value="${DATA_DIR}/logs" />
+
+    <timestamp key="today" datePattern="yyyyMMdd" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 当前写入的日志文件 -->
+        <file>${LOG_DIR}/im-log-${today}.log</file>
+        <encoder class="com.immotors.imlog.encoder.ExtendedPatternLayoutEncoder">
+            <pattern>%date %process_id [%-4thread][%thread_id] %level/%logger{35} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--归档后的文件-->
+            <!-- daily rollover period %d 默认yyyy-MM-dd 可以自己修改 %d{yyyy_MM_dd} %i 代表回滚后归档序号 默认从0开始-->
+            <fileNamePattern>${LOG_DIR}/im-log-%d{yyyyMMdd}_%i.zip</fileNamePattern>
+            <!--每个日志文件最大值-->
+            <maxFileSize>60MB</maxFileSize>
+            <!--滚动记录最近3天的日志-->
+            <maxHistory>3</maxHistory>
+            <!--所有归档文件的总大小-->
+            <totalSizeCap>300M</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
