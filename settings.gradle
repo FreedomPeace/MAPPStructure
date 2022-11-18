@@ -16,27 +16,22 @@ rootProject.name = "MAPPStructure"
 include ':app'
 
 //业务模块，输出的api
-include ':business_out_interface_api'
-include ':business_out_interface_api:comutity_out_api'
-include ':business_out_interface_api:login_out_api'
+include ':m_common_interface_api'
+include ':m_common_interface_api:m_browser_api'
 //业务模块
-include ':business_module'
-include ':business_module:community'
-include ':business_module:im_login'
+include ':m_business_module'
+include ':m_business_module:m_browser'
 
 //自家核心api类库
-include ':library_self_core'
-include ':library_self_core:network_api'
-include ':library_self_core:upload_log_api'
-include ':library_self_core:im_ui_kit'//ui 库
-include ':library_self_core:picture_selector'
-include ':library_self_core:im_core_base'
+include ':m_library_self_tool'
+include ':m_library_self_tool:network_api'
+include ':m_library_self_tool:upload_log_api'
+include ':m_library_self_tool:im_ui_kit'//ui 库
+include ':m_library_self_tool:im_core_base'
 
 //第三方业务工具模块
-include ':library_third_business'
-include ':library_third_business:im_ble_charge'
+include ':library_third_tool'
 include ':library_third_business:im_pay'
-include ':library_third_business:im_msg'
 
 
 

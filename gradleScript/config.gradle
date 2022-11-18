@@ -1,0 +1,235 @@
+ext {
+    //android 开发版本
+    android = [
+            compileSdkVersion: 30,
+            buildToolsVersion: '30.0.2',
+            minSdkVersion    : 24,
+            targetSdkVersion : 29,
+            applicationId    : "com.aa.lapp",
+            versionCode      : 35,
+            versionName      : "V1.1.5",
+    ]
+
+    //version 版本控制
+    versions = [
+
+    ]
+
+    //androidx支持库配置
+
+    androidx = [
+            "androidx-startup"                    : "androidx.startup:startup-runtime:1.1.0",
+            "androidx-appcompat"                  : "androidx.appcompat:appcompat:1.3.1",
+            "androidx.recyclerview"               : "androidx.recyclerview:recyclerview:1.2.0",
+            "androidx.constraintlayout"           : "androidx.constraintlayout:constraintlayout:2.1.0",
+            "androidx.cardview"                   : "androidx.cardview:cardview:1.0.0",
+            "android.material"                    : "com.google.android.material:material:1.4.0",
+            "androidx.navigation-fragment"        : "androidx.navigation:navigation-fragment:2.3.5",
+            "androidx.navigation-fragment-ktx"    : "androidx.navigation:navigation-fragment-ktx:2.3.5",
+            "androidx.navigation-ui"              : "androidx.navigation:navigation-ui:2.3.5",
+            "junit"                               : "junit:junit:4.13.2",
+            "androidx.test.ext-junit"             : "androidx.test.ext:junit:1.1.0",
+            "androidx.test.espresso:espresso-core": "androidx.test.espresso:espresso-core:3.1.1",
+            "androidx.test:rules"                 : "androidx.test:rules:1.1.1",
+            "androidx.test:runner"                : "androidx.test:runner:1.1.1",
+            "androidx.legacy"                     : "androidx.legacy:legacy-support-v4:1.0.0",
+
+            "androidx.concurrent"                 : "androidx.concurrent:concurrent-futures:1.1.0",
+            "androidx.annotation"                 : "androidx.annotation:annotation:1.3.0",
+            "androidx.annotation-experimental"    : "androidx.annotation:annotation-experimental:1.1.0",
+
+            "androidx.exifinterface"              : "androidx.exifinterface:exifinterface:1.3.1",
+            "androidx.camera:camera-lifecycle"    : "androidx.camera:camera-lifecycle:1.0.0-beta12",
+            "androidx.localbroadcastmanager"      : "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0",
+            "androidx.camera:camera-view"         : "androidx.camera:camera-view:1.0.0-alpha19",
+
+
+            "androidx.transition"                 : "androidx.transition:transition:1.3.1",
+
+
+
+            "androidx.camera:camera-core"         : "androidx.camera:camera-core:1.0.0-beta03",
+            "androidx.camera:camera-camera2"      : "androidx.camera:camera-camera2:1.0.0-beta12",
+
+            "androidx.datastore"                  : "androidx.datastore:datastore:1.0.0",
+            "androidx.datastore.rxjava"           : "androidx.datastore:datastore-rxjava3:1.0.0",
+            "androidx.datastore.preference"       : "androidx.datastore:datastore-preferences:1.0.0",
+            "androidx.datastore.preference.rxjava": "androidx.datastore:datastore-preferences-rxjava3:1.0.0",
+            "protobuf-javalite"                   : "com.google.protobuf:protobuf-javalite:3.19.1",
+            "security-crypto"                     : 'androidx.security:security-crypto:1.0.0',
+            "work-runtime"                        : "androidx.work:work-runtime:2.5.0",
+            "androidx.lifecycle"                  : "androidx.lifecycle:lifecycle-extensions:2.2.0",
+            "lifecycle-reactivestream"            : 'androidx.lifecycle:lifecycle-reactivestreams:2.3.1',
+            "lifecycle-common-java8"              : "androidx.lifecycle:lifecycle-common-java8:2.3.1",
+            "lifecycle-runtime"                   : "androidx.lifecycle:lifecycle-runtime:2.3.1",
+            "lifecycle-viewmodel"                 : "androidx.lifecycle:lifecycle-viewmodel:2.3.1",
+            "lifecycle-livedata"                  : "androidx.lifecycle:lifecycle-livedata:2.3.1"
+    ]
+    kotlin_version = '1.4.10'
+    imui_version = '2.0.7-11091836-SNAPSHOT'
+    im_go_version = '2.0.6'
+    dependencies = [
+
+            "okio"                         : "com.squareup.okio:okio:2.9.0",
+            "loadsir"                      : "com.kingja.loadsir:loadsir:1.3.8",
+            "gson"                         : "com.google.code.gson:gson:2.8.6",
+            "gson-fire"                    : 'io.gsonfire:gson-fire:1.8.5',
+//            "rxjava2"                      : "io.reactivex.rxjava2:rxjava:2.2.10",
+            "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6",
+//            "immersionbar"                 : "com.gyf.immersionbar:immersionbar:3.0.0",
+            "glide"                        : "com.github.bumptech.glide:glide:4.11.0",
+            "glide-compiler"               : "com.github.bumptech.glide:compiler:4.11.0",
+            "arouter-api"                  : "com.alibaba:arouter-api:1.5.0",
+            "arouter-compiler"             : "com.alibaba:arouter-compiler:1.2.2",
+            "utilcodex"                    : "com.blankj:utilcodex:1.31.0",
+
+            "okhttp"                       : "com.squareup.okhttp3:okhttp:4.9.0",
+            "rxhttp-compiler"              : "com.ljx.rxhttp:rxhttp-compiler:2.4.2",
+            "okhttp-logging-interceptor"   : "com.squareup.okhttp3:logging-interceptor:4.9.0",
+            "rxjava"                       : "io.reactivex.rxjava3:rxjava:3.0.12",
+            "rxandroid"                    : "io.reactivex.rxjava3:rxandroid:3.0.0",
+//            "rxlife-rxjava"                : "com.ljx.rxlife3:rxlife-rxjava:3.0.0",
+
+            "retrofit2-rxjava3-adapter"    : 'com.squareup.retrofit2:adapter-rxjava3:2.9.0',
+            "rx-dog-tag"                   : "com.uber.rxdogtag2:rxdogtag:2.0.1",
+            "retrofit"                     : 'com.squareup.retrofit2:retrofit:2.9.0',
+            "retrofit-gson-converter"      : 'com.squareup.retrofit2:converter-gson:2.9.0',
+//            "converter-gson"                   : 'com.squareup.retrofit2:converter-gson:2.6.1',
+            "converter-scalars"            : 'com.squareup.retrofit2:converter-scalars:2.9.0',
+
+
+            "MagicIndicator"               : "com.github.hackware1993:MagicIndicator:1.7.0",
+
+            "refresh-layout"               : "com.scwang.smart:refresh-layout-kernel:2.0.3",
+            "refresh-header"               : "com.scwang.smart:refresh-header-classics:2.0.3",
+            "refresh-footer"               : "com.scwang.smart:refresh-footer-classics:2.0.3",
+            "refresh_header_radar"         : "com.scwang.smart:refresh-header-radar:2.0.3",
+            "refresh_header_falsify"       : "com.scwang.smart:refresh-header-falsify:2.0.3",
+            "refresh_header_material"      : "com.scwang.smart:refresh-header-material:2.0.3",
+            "refresh_header_two_level"     : "com.scwang.smart:refresh-header-two-level:2.0.3",
+            "refresh_footer_ball"          : "com.scwang.smart:refresh-footer-ball:2.0.3",
+
+            "banner"                       : "com.youth.banner:banner:2.1.0",
+
+            "eventbus"                     : "org.greenrobot:eventbus:3.2.0",
+//网易直播相关
+            "nimlib"                       : "com.netease.nimlib:basesdk:8.11.5",
+            "chatroom"                     : "com.netease.nimlib:chatroom:8.11.5",
+            "neliveplayer"                 : "com.netease.nimlib:neliveplayer:2.9.0",
+            "gslb"                         : "com.netease:gslb:1.1.0",
+            "photoView"                    : "com.github.chrisbanes:PhotoView:2.3.0",
+            "push"                         : "com.netease.nimlib:push:8.11.5",
+            "lucene"                       : "com.netease.nimlib:lucene:8.11.5",
+
+//弹幕相关
+            "DanmakuFlameMaster"           : "com.github.ctiao:DanmakuFlameMaster:0.9.25",
+            "ndkbitmap-armv7a"             : "com.github.ctiao:ndkbitmap-armv7a:0.9.21",
+
+//lottie 动画
+
+            "lottie"                       : "com.airbnb.android:lottie:3.4.0",
+            "fastjson"                     : "com.alibaba:fastjson:1.1.70.android",
+//wheelview
+            "wheelview"                    : "com.contrarywind:wheelview:4.1.0",
+//高德定位
+            "location"                     : "com.amap.api:location:latest.integration",
+//动态权限
+            "permissionx"                  : "com.permissionx.guolindev:permissionx:1.4.0",
+//DSBridge
+            "dsbridge"                     : "com.github.wendux:DSBridge-Android:3.0+",
+//友盟 基础组件库
+            "umsdk-common"                 : "com.umeng.umsdk:common:9.5.2",
+            "umsdk-asms"                   : "com.umeng.umsdk:asms:1.4.1",
+
+//            "umsdk-apm"                    : "com.umeng.umsdk:apm:1.4.2",
+//分享核心库，必选
+            "umsdk-share-core"             : "com.umeng.umsdk:share-core:7.1.9",
+//友盟 三方平台库
+            "umsdk-share-wx"               : "com.umeng.umsdk:share-wx:7.1.9",
+//腾讯微信open-sdk
+            "wechat-sdk"                   : "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.8.0",
+//阿里推送
+            "ali-push"                     : "com.aliyun.ams:alicloud-android-push:3.5.0",
+//厂商推送
+            "ali-third-push"               : "com.aliyun.ams:alicloud-android-third-push:3.4.0",
+            "ali-third-push-xiaomi"        : "com.aliyun.ams:alicloud-android-third-push-xiaomi:3.4.0",
+            "ali-third-push-vivo"          : "com.aliyun.ams:alicloud-android-third-push-vivo:3.4.0",
+            "ali-third-push-oppo"          : "com.aliyun.ams:alicloud-android-third-push-oppo:3.4.0",
+            "ali-third-push-huawei"        : "com.aliyun.ams:alicloud-android-third-push-huawei:3.4.0",
+            "ali-third-push-meizu"         : "com.aliyun.ams:alicloud-android-third-push-meizu:3.4.0",
+//小米等原生厂商推送
+            "push-xiaomi"                  : "com.xiaomi.mipush.sdk:mipush:3.8.5",
+            "push-huawei"                  : "com.huawei.hms:push:5.0.4.302",
+            "push-meizu"                   : "com.aliyun.ams:meizu-push:4.0.2",
+//阿里云 对象存储 OSS
+            "ali-AliyunOSS"                : "com.aliyun.dpa:oss-android-sdk:2.9.13",
+//阿里云 视频上传
+            "ali-AliyunVideoUpload"        : "com.aliyun.video.android:upload:1.6.2",
+
+            //解决Rxjava内存泄漏
+            "rxlifecycle"                  : 'com.trello.rxlifecycle4:rxlifecycle:4.0.2',
+            "rxlifecycle-activity"         : 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2',
+            "rxlifecycle-android"          : 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2',
+            "rxlifecycle-android-lifecycle": 'com.trello.rxlifecycle4:rxlifecycle-android-lifecycle:4.0.2',
+
+            "chuck-debug"                  : 'com.github.chuckerteam.chucker:library:3.5.2',
+            "chuck-release"                : 'com.github.chuckerteam.chucker:library-no-op:3.5.2',
+
+            // bugly
+            "bugly-crashreport"            : "com.tencent.bugly:crashreport:3.4.4",
+            "bugly-nativecrashreport"      : "com.tencent.bugly:nativecrashreport:3.9.2",
+            "core-ktx"                     : 'androidx.core:core-ktx:1.3.2',
+            "kotlin-stdlib"                : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+
+            //侧滑布局
+            "SwipeDelMenuLayout"           : "com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0",
+            //角标
+            "ShortcutBadger"               : "me.leolin:ShortcutBadger:1.1.22@aar",
+            "xuexiangXupdate"              : "com.github.xuexiangjys:XUpdate:2.1.1",
+            "SVGAPlayer"                   : "com.github.yyued:SVGAPlayer-Android:2.6.1",
+            //GrowingIO 无埋点 SDK
+            "GIOTracker"                   : "com.growingio.android:autotracker-cdp:3.4.1",
+            //GrowingIO 加密模块
+            "GIOTrackerEncoder"            : "com.growingio.android:encoder:3.4.1",
+            "android-gif-drawable"         : "pl.droidsonroids.gif:android-gif-drawable:1.2.23",
+            "kotlin-stdlib"                : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            //华为统一扫码服务
+            "huaweiScan"                   : "com.huawei.hms:scanplus:1.3.2.300",
+            "commons-lang3"                : "org.apache.commons:commons-lang3:3.12.0",
+            "bouncycastle"                 : "org.bouncycastle:bcpkix-jdk15on:1.61",
+            //oppo拉活
+            "oplus-base"                   : "com.oplus.ocs:base:1.0.11",
+            "oplus-carlink"                : "com.oplus.ocs:carlink:1.4.3",
+            "android-startup"              : 'io.github.idisfkj:android-startup:1.0.7',
+            "acra-mail"                    : "ch.acra:acra-mail:5.7.0",
+            "acra-dialog"                  : "ch.acra:acra-dialog:5.7.0",
+            "slf4j"                        : 'org.slf4j:slf4j-api:1.7.25',
+            "logback-android"              : 'com.github.tony19:logback-android:2.0.0',
+            "auto-service-annotation"      : "com.google.auto.service:auto-service-annotations:1.0",
+            "auto-service"                 : "com.google.auto.service:auto-service:1.0",
+            "exoplayer-core"               : "com.google.android.exoplayer:exoplayer-core:2.18.1",
+            "exoplayer-ui"                 : "com.google.android.exoplayer:exoplayer-ui:2.18.1",
+            //download
+            "okdownload"                   : "com.liulishuo.okdownload:okdownload:1.0.7",
+            "okdownload-sql"               : "com.liulishuo.okdownload:sqlite:1.0.7",
+            "okdownload-okhttp"            : "com.liulishuo.okdownload:okhttp:1.0.7",
+            "okdownload-filedownloader"    : "com.liulishuo.okdownload:filedownloader:1.0.7",
+            "apng"                         : "com.github.penfeizhou.android.animation:apng:2.17.2",
+            "rxFFmpeg"                     : "com.github.microshow:RxFFmpeg:4.9.0-lite",
+            //骨架屏
+            "skeleton"                     : "com.ethanhua:skeleton:1.1.2",
+            "shimmerlayout"                : "io.supercharge:shimmerlayout:2.1.0",
+            "unpeek-livedata"              : "com.kunminx.arch:unpeek-livedata:7.2.0-beta1",
+            "strict-databinding"           : "com.kunminx.arch:strict-databinding:4.0.0-beta1",
+            "binding-recyclerview"         : "com.kunminx.arch:binding-recyclerview:3.9.0-beta1",
+            //火山引擎
+            "apm-insight"                  : "com.volcengine:apm_insight:1.4.7.cn",
+            "apm-insight-crash"            : "com.volcengine:apm_insight_crash:1.4.6-rc.6",
+            // 腾讯 PAG
+            "libpag"                       : "com.tencent.tav:libpag:4.0.5.10"
+
+    ]
+    //防劫持白名单，白名单内的页面不添加防劫持能力，一般开启单独进程的页面需配置其包名
+    hijack_white_list = [
+    ]
+}

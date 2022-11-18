@@ -11,22 +11,18 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/business_module" />
-            <option value="$PROJECT_DIR$/business_module/community" />
-            <option value="$PROJECT_DIR$/business_module/im_login" />
-            <option value="$PROJECT_DIR$/business_out_interface_api" />
-            <option value="$PROJECT_DIR$/business_out_interface_api/comutity_out_api" />
-            <option value="$PROJECT_DIR$/business_out_interface_api/login_out_api" />
-            <option value="$PROJECT_DIR$/library_self_core" />
-            <option value="$PROJECT_DIR$/library_self_core/im_core_base" />
-            <option value="$PROJECT_DIR$/library_self_core/im_ui_kit" />
-            <option value="$PROJECT_DIR$/library_self_core/network_api" />
-            <option value="$PROJECT_DIR$/library_self_core/picture_selector" />
-            <option value="$PROJECT_DIR$/library_self_core/upload_log_api" />
             <option value="$PROJECT_DIR$/library_third_business" />
-            <option value="$PROJECT_DIR$/library_third_business/im_ble_charge" />
-            <option value="$PROJECT_DIR$/library_third_business/im_msg" />
             <option value="$PROJECT_DIR$/library_third_business/im_pay" />
+            <option value="$PROJECT_DIR$/library_third_tool" />
+            <option value="$PROJECT_DIR$/m_business_module" />
+            <option value="$PROJECT_DIR$/m_business_module/m_browser" />
+            <option value="$PROJECT_DIR$/m_common_interface_api" />
+            <option value="$PROJECT_DIR$/m_common_interface_api/m_browser_api" />
+            <option value="$PROJECT_DIR$/m_library_self_tool" />
+            <option value="$PROJECT_DIR$/m_library_self_tool/im_core_base" />
+            <option value="$PROJECT_DIR$/m_library_self_tool/im_ui_kit" />
+            <option value="$PROJECT_DIR$/m_library_self_tool/network_api" />
+            <option value="$PROJECT_DIR$/m_library_self_tool/upload_log_api" />
             <option value="$PROJECT_DIR$/test" />
           </set>
         </option>
