@@ -1,0 +1,84 @@
+apply plugin: 'maven-publish'
+apply from: "$rootDir/gradleScript/upload_lib_config.gradle"
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        def pomMaps = [
+                "version"     : "1.0.0",
+                "groupId"     : "com.i",
+                "artifactId"  : "",
+                "packaging"   : "aar",
+                "description" : "",
+                "universalAAR": false
+        ]
+        def local_module = local_modules["${project.path}"]
+        pomMaps.version = snapshot.booleanValue()  ? pomLocalVersion() : export_version
+        if (local_module["packaging"]?.trim()) {
+            pomMaps.packaging = local_module["packaging"]
+        }
+        if (local_module["groupId"]?.trim()) {
+            pomMaps.groupId = local_module["groupId"]
+        }
+        if (local_module["artifactId"]?.trim()) {
+            pomMaps.artifactId = local_module["artifactId"]
+        }
+        publications {
+            // Creates a Maven publication called "release".
+            Sdk(MavenPublication) {
+                // Applies the component for the release build variant.
+                //提供aar不混淆
+                from components.release
+                artifact androidSourcesJar
+                if (pomMaps.artifactId?.trim()) {
+                    artifactId pomMaps.artifactId
+                }
+                if (pomMaps.groupId?.trim()) {
+                    groupId pomMaps["groupId"]
+                }
+                if (pomMaps.version?.trim()) {
+                    version pomMaps["version"]
+                }
+            }
+        }
+        repositories {
+            maven {
+                name = "release"
+                url = url_release
+                allowInsecureProtocol = true
+                credentials {
+                    username 'admin'
+                    password 'admin123'
+                }
+            }
+            //‼️snapshot不能传，使用老的maven插件上传
+            maven {
+                name = "snapshot"
+                url = url_snapshot
+                allowInsecureProtocol = true
+                credentials {
+                    username 'admin'
+                    password 'admin123'
+                }
+            }
+            maven {
+                name = "Repo"
+                url = "$rootDir/repo"
+            }
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+task androidSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+artifacts {
+    archives androidSourcesJar
+}

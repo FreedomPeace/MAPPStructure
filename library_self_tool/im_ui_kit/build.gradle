@@ -1,13 +1,14 @@
 plugins {
-    id 'com.android.application'//library
+    id 'com.android.library'//library
 }
+apply from: "$rootDir/gradleScript/upload_maven.gradle"
 
 android {
-    namespace 'com.framework.common_resource'
+    namespace 'com.framework.ui'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.framework.common_resource"
+//        applicationId "com.framework.common_resource"
         minSdk 21
         targetSdk 32
         versionCode 1

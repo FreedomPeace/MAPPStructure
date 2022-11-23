@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
 }
-//apply from: "$rootDir/gradleScript/envFlavors.gradle"
+apply from: "$rootDir/gradleScript/upload_maven.gradle"
 
 android {
     namespace 'com.framework.core_azp'

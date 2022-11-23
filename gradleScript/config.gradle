@@ -4,7 +4,7 @@ ext {
             compileSdkVersion: 30,
             minSdkVersion    : 24,
             targetSdkVersion : 32,
-            applicationId    : "com.immotors.lapp",
+            applicationId    : "com.pp.dd",
             versionCode      : 35,
             versionName      : "V1.1.5",
     ]
@@ -65,43 +65,7 @@ ext {
             "lifecycle-livedata"                  : "androidx.lifecycle:lifecycle-livedata:2.3.1"
     ]
     kotlin_version = '1.4.10'
-    imui_version = '2.0.7-11091836-SNAPSHOT'
-    im_go_version = '2.0.6'
     dependencies = [
-            "csop-basic"                   : "com.immotors.lib.csop:basic:1.2.0",
-            "csop-home"                    : "com.immotors.cmp:home:1.7.1",
-            "csop-game"                    : "com.immotors.cmp:game:0.6.4",
-            //maven私服-组件库1. 指令length 字段转小端发送
-            "im-compnent"                  : "com.immotors:component:$imui_version",
-            //需要给图片库单独用
-            "im-permission"                : "com.immotors:permission:$imui_version",
-            "im-widget"                    : "com.immotors:widget:$imui_version",
-            //location-组件库
-            "im-location"                  : "com.immotors:location:$imui_version",
-            //maven私服-核心库
-            "im-network"                   : "com.immotors:network:2.0.6.2",
-            "im-core"                      : "com.immotors:core:2.0.6.1",
-            "im-model"                     : "com.immotors.temp:model:1.0.0",
-            "im-log"                       : "com.immotors:im_log:1.4.7.1",
-            "im-log-upload"                : "com.immotors:im_log_upload:1.4.7.112",
-            "im-ble-charge"                : "com.immotors:im_ble_charge:2.0.0.114",
-            "im-msg"                       : "com.immotors:im_msg:2.0.0.2",
-            "im-ble-charge-test"           : "com.immotors:im_ble_charge_test:2.0.0.3",
-            //图片选择器
-            "im-picture"                   : "com.immotors.picture:library:2.0.8.1",
-            "im-resource"                  : "com.immotors:resource:2.0.7.1",
-            //视频播放器
-            "im-mediaplayer-api"           : "com.immotors.mediaplayer:api:2.0.6.2",
-            "im-mediaplayer-nim"           : "com.immotors.mediaplayer:nim:1.2.1",
-            //business im go
-            "im-go-compont"                : "com.immotors.business.go:compont:$im_go_version",
-            "im-go-api"                    : "com.immotors.business.go:api:$im_go_version",
-            //支付组件
-            "im-pay"                        : "com.immotors:impay:2.0.4",
-            //IM智己封装的GIO埋点组件
-            "im-track"                    : "com.immotors.track:core:2.0.3.2",
-            "im-eventbus-api"             : "com.immotors.imeventbus:api:1.0.2",
-            "im-eventbus-processor"       : "com.immotors.imeventbus:processor:1.0.2",
 
             "okio"                         : "com.squareup.okio:okio:2.9.0",
             "loadsir"                      : "com.kingja.loadsir:loadsir:1.3.8",
@@ -266,8 +230,5 @@ ext {
             "libpag"                       : "com.tencent.tav:libpag:4.0.5.10"
 
     ]
-    //防劫持白名单，白名单内的页面不添加防劫持能力，一般开启单独进程的页面需配置其包名
-    hijack_white_list = [
-            "com.immotors.csop"
-    ]
+
 }
