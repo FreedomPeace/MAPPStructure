@@ -2,10 +2,9 @@ ext {
     //android 开发版本
     android = [
             compileSdkVersion: 30,
-            buildToolsVersion: '30.0.2',
             minSdkVersion    : 24,
-            targetSdkVersion : 29,
-            applicationId    : "com.aa.lapp",
+            targetSdkVersion : 32,
+            applicationId    : "com.immotors.lapp",
             versionCode      : 35,
             versionName      : "V1.1.5",
     ]
@@ -69,6 +68,40 @@ ext {
     imui_version = '2.0.7-11091836-SNAPSHOT'
     im_go_version = '2.0.6'
     dependencies = [
+            "csop-basic"                   : "com.immotors.lib.csop:basic:1.2.0",
+            "csop-home"                    : "com.immotors.cmp:home:1.7.1",
+            "csop-game"                    : "com.immotors.cmp:game:0.6.4",
+            //maven私服-组件库1. 指令length 字段转小端发送
+            "im-compnent"                  : "com.immotors:component:$imui_version",
+            //需要给图片库单独用
+            "im-permission"                : "com.immotors:permission:$imui_version",
+            "im-widget"                    : "com.immotors:widget:$imui_version",
+            //location-组件库
+            "im-location"                  : "com.immotors:location:$imui_version",
+            //maven私服-核心库
+            "im-network"                   : "com.immotors:network:2.0.6.2",
+            "im-core"                      : "com.immotors:core:2.0.6.1",
+            "im-model"                     : "com.immotors.temp:model:1.0.0",
+            "im-log"                       : "com.immotors:im_log:1.4.7.1",
+            "im-log-upload"                : "com.immotors:im_log_upload:1.4.7.112",
+            "im-ble-charge"                : "com.immotors:im_ble_charge:2.0.0.114",
+            "im-msg"                       : "com.immotors:im_msg:2.0.0.2",
+            "im-ble-charge-test"           : "com.immotors:im_ble_charge_test:2.0.0.3",
+            //图片选择器
+            "im-picture"                   : "com.immotors.picture:library:2.0.8.1",
+            "im-resource"                  : "com.immotors:resource:2.0.7.1",
+            //视频播放器
+            "im-mediaplayer-api"           : "com.immotors.mediaplayer:api:2.0.6.2",
+            "im-mediaplayer-nim"           : "com.immotors.mediaplayer:nim:1.2.1",
+            //business im go
+            "im-go-compont"                : "com.immotors.business.go:compont:$im_go_version",
+            "im-go-api"                    : "com.immotors.business.go:api:$im_go_version",
+            //支付组件
+            "im-pay"                        : "com.immotors:impay:2.0.4",
+            //IM智己封装的GIO埋点组件
+            "im-track"                    : "com.immotors.track:core:2.0.3.2",
+            "im-eventbus-api"             : "com.immotors.imeventbus:api:1.0.2",
+            "im-eventbus-processor"       : "com.immotors.imeventbus:processor:1.0.2",
 
             "okio"                         : "com.squareup.okio:okio:2.9.0",
             "loadsir"                      : "com.kingja.loadsir:loadsir:1.3.8",
@@ -136,7 +169,7 @@ ext {
 //动态权限
             "permissionx"                  : "com.permissionx.guolindev:permissionx:1.4.0",
 //DSBridge
-            "dsbridge"                     : "com.github.wendux:DSBridge-Android:3.0+",
+            "dsbridge"                     : "com.github.wendux:DSBridge-Android:3.0-SNAPSHOT",
 //友盟 基础组件库
             "umsdk-common"                 : "com.umeng.umsdk:common:9.5.2",
             "umsdk-asms"                   : "com.umeng.umsdk:asms:1.4.1",
@@ -201,6 +234,8 @@ ext {
             "oplus-base"                   : "com.oplus.ocs:base:1.0.11",
             "oplus-carlink"                : "com.oplus.ocs:carlink:1.4.3",
             "android-startup"              : 'io.github.idisfkj:android-startup:1.0.7',
+            "xiaosdk"                      : "com.immotors:xiaosdk:1.0.1@aar",
+            "alipaysdk"                    : "com.immotors:alipaysdk:1.0.0@aar",
             "acra-mail"                    : "ch.acra:acra-mail:5.7.0",
             "acra-dialog"                  : "ch.acra:acra-dialog:5.7.0",
             "slf4j"                        : 'org.slf4j:slf4j-api:1.7.25',
@@ -222,6 +257,8 @@ ext {
             "unpeek-livedata"              : "com.kunminx.arch:unpeek-livedata:7.2.0-beta1",
             "strict-databinding"           : "com.kunminx.arch:strict-databinding:4.0.0-beta1",
             "binding-recyclerview"         : "com.kunminx.arch:binding-recyclerview:3.9.0-beta1",
+            //高德地图sdk
+            "GDMap"                        : "com.immotors:GDMap:1.0",
             //火山引擎
             "apm-insight"                  : "com.volcengine:apm_insight:1.4.7.cn",
             "apm-insight-crash"            : "com.volcengine:apm_insight_crash:1.4.6-rc.6",
@@ -231,5 +268,6 @@ ext {
     ]
     //防劫持白名单，白名单内的页面不添加防劫持能力，一般开启单独进程的页面需配置其包名
     hijack_white_list = [
+            "com.immotors.csop"
     ]
 }

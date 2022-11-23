@@ -3,13 +3,12 @@ plugins {
 }
 apply from: "$rootDir/gradleScript/envFlavors.gradle"
 android {
-    namespace 'com.framework.exp'
-    compileSdk 32
-
+    namespace "com.framework.exp"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         applicationId "com.framework.exp"
-        minSdk 21
-        targetSdk 32
         versionCode 1
         versionName "1.0"
 
@@ -28,13 +27,10 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':m_library_self_tool:im_core_base')
-    project(":m_library_self_tool:im_core_base")
-    project(":m_business_module:m_browser")
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation rootProject.ext.androidx["androidx-appcompat"]
+    implementation rootProject.ext.androidx["android.material"]
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation project(path: ':library_self_tool:im_core_base')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }

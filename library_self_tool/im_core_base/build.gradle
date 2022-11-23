@@ -1,17 +1,17 @@
 plugins {
     id 'com.android.library'
 }
+//apply from: "$rootDir/gradleScript/envFlavors.gradle"
 
 android {
-    namespace 'com.framework.upload_log_api'
-    compileSdk 32
-
+    namespace 'com.framework.core_azp'
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
-        applicationId "com.framework.upload_log_api"
-        minSdk 21
-        targetSdk 32
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
+//        applicationId "com.framework.core_azp"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,9 +30,8 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation rootProject.ext.androidx["androidx-appcompat"]
+    implementation rootProject.ext.androidx["android.material"]
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }
