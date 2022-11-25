@@ -16,7 +16,7 @@
 
   ### **lib_or_app.gradle**
 
-  这个脚本主要是给各个子Project用的。
+  这个脚本主要是给各subProject用的。
 
   ### dependencies_config.gradle 和
 
