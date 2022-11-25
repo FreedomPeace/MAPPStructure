@@ -1,17 +1,14 @@
-plugins {
-    id 'com.android.library'
-}
-apply from: "$rootDir/gradleScript/upload_maven.gradle"
-
+apply from: "$rootDir/gradleScript/lib_or_app.gradle"
 android {
-    namespace 'com.framework.core_azp'
+    namespace 'com.framework.im_core_base'
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
-//        applicationId "com.framework.core_azp"
+        if (!rootProject.ext.local_modules["${project.path}"]["isLib"])
+            applicationId "com.framework.im_core_base"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

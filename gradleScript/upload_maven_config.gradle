@@ -21,14 +21,42 @@ ext {
      */
     local_modules = [
             ":library_self_tool:im_core_base": [
-                    "groupId"    : "com.framework.core_azp",
+                    "groupId"    : "com.framework.im_core_base",
                     "artifactId" : "compont",//api
                     "packaging"  : "aar",
                     "useSource"  : true,
                     "uploadOrder": 0
-            ],
-            ":library_self_tool:im_ui_kit"    : [
-                    "groupId"    : "com.framework.ui",
+            ]
+            , ":library_self_tool:network_api": [
+                    "groupId"    : "com.framework.network_api",
+                    "artifactId" : "compont",//api
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 0
+            ]
+            ,":library_self_tool:upload_log_api": [
+                    "groupId"    : "com.framework.upload_log_api",
+                    "artifactId" : "compont",//api
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 0
+            ]
+            ,":library_self_tool:im_ui_kit": [
+                    "groupId"    : "com.framework.im_ui_kit",
+                    "artifactId" : "compont",//api
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 0
+            ]
+            ,":m_common_interface_api:m_browser_api"    : [
+                    "groupId"    : "com.framework.m_browser_api",
+                    "artifactId" : "compont",
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 1
+            ]
+            ,":m_business_module:m_browser"    : [
+                    "groupId"    : "com.framework.m_browser",
                     "artifactId" : "compont",
                     "packaging"  : "aar",
                     "useSource"  : true,

@@ -1,13 +1,11 @@
-plugins {
-    id 'com.android.library'
-}
-
+apply from: "$rootDir/gradleScript/lib_or_app.gradle"
 android {
     namespace 'com.framework.m_browser_api'
     compileSdk rootProject.ext.android.compileSdkVersion
 
     defaultConfig {
-//        applicationId "com.framework.m_browser_api"
+        if (!rootProject.ext.local_modules["${project.path}"]["isLib"])
+            applicationId "com.framework.m_browser_api"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -29,7 +27,7 @@ android {
 }
 
 dependencies {
-    implementation rootProject.ext.dependencies["arouter-api"]
+//    implementation rootProject.ext.dependencies["arouter-api"]
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     testImplementation 'junit:junit:4.13.2'

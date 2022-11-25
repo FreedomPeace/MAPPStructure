@@ -1,5 +1,5 @@
 apply plugin: 'maven-publish'
-apply from: "$rootDir/gradleScript/upload_lib_config.gradle"
+apply from: "$rootDir/gradleScript/upload_maven_config.gradle"
 
 // Because the components are created only during the afterEvaluate phase, you must
 // configure your publications using the afterEvaluate() lifecycle method.

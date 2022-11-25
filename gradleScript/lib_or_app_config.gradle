@@ -1,0 +1,23 @@
+ext {
+    local_modules = [
+            ":library_self_tool:im_core_base"        : [
+                    "isLib": true,
+            ]
+            , ":library_self_tool:network_api"       : [
+            "isLib": false,
+    ]
+            , ":library_self_tool:upload_log_api"    : [
+            "isLib": false,
+    ]
+            , ":library_self_tool:im_ui_kit"         : [
+            "isLib": false,
+    ]
+            , ":m_common_interface_api:m_browser_api": [
+            "isLib": false,
+    ]
+            , ":m_business_module:m_browser"         : [
+            "isLib": false,
+    ]
+    ]
+
+}

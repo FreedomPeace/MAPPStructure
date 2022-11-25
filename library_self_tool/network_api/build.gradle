@@ -1,14 +1,11 @@
-plugins {
-//    id 'com.android.application'
-    id 'com.android.library'
-}
-
+apply from: "$rootDir/gradleScript/lib_or_app.gradle"
 android {
     namespace 'com.framework.network_api'
     compileSdk 32
 
     defaultConfig {
-//        applicationId "com.framework.network_api"
+        if (!rootProject.ext.local_modules["${project.path}"]["isLib"])
+            applicationId "com.framework.network_api"
         minSdk 21
         targetSdk 32
         versionCode 1

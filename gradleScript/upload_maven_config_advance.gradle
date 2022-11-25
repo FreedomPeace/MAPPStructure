@@ -1,0 +1,189 @@
+ext {
+    //上传到本地repo，如果是true上传本地
+    local = true
+    //是否使用snapshot
+    snapshot = true
+    url_release = "http://10.184.158.16:8081/repository/maven-releases/"
+    url_snapshot = "http://10.184.158.16:8081/repository/maven-snapshots/"
+    project3 = this.&project3
+    getPomVersion = this.&getPomVersion
+    pomLocalVersion = this.&pomLocalVersion
+    //统一版本号
+    export_version = "2.0.9"
+    /**
+     * 定义动态构建配置
+     *          project path
+     *                  groupId
+     *                  artifactId
+     *                  version
+     *                  useSource   是否使用源码
+     *                  uploadOrder 上传顺序，没有依赖的在前面
+     */
+    local_modules = [
+            ":library_self_tool:im_core_base": [
+                    "groupId"    : "com.framework.im_core_base",
+                    "artifactId" : "compont",//api
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 0
+            ]
+            , ":library_self_tool:network_api": [
+                    "groupId"    : "com.framework.network_api",
+                    "artifactId" : "compont",//api
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 0
+            ]
+            ,":library_self_tool:upload_log_api": [
+                    "groupId"    : "com.framework.upload_log_api",
+                    "artifactId" : "compont",//api
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 0
+            ]
+            ,":library_self_tool:im_ui_kit": [
+                    "groupId"    : "com.framework.im_ui_kit",
+                    "artifactId" : "compont",//api
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 0
+            ]
+            ,":m_common_interface_api:m_browser_api"    : [
+                    "groupId"    : "com.framework.m_browser_api",
+                    "artifactId" : "compont",
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 1
+            ]
+            ,":m_business_module:m_browser"    : [
+                    "groupId"    : "com.framework.m_browser",
+                    "artifactId" : "compont",
+                    "packaging"  : "aar",
+                    "useSource"  : true,
+                    "uploadOrder": 1
+            ]
+    ]
+}
+
+
+/**
+ * 返回当前版本
+ */
+String getPomVersion(prjPath) {
+    def localVersion = pomLocalVersion()
+    if (localVersion && !localVersion.isEmpty()) {
+        return localVersion
+    }
+    def remotePomLatestVersion = pomRemoteVersion(prjPath)
+    if (snapshot.booleanValue()) {
+        saveSnapShotRemoteVersionToLocal(remotePomLatestVersion)
+    }
+    return remotePomLatestVersion
+}
+
+/**
+ * 本地pom的版本
+ * @return
+ */
+String pomLocalVersion() {
+    if (snapshot.booleanValue()) {
+        File pro_file = file("$rootDir/scripts/snapshot.properties")
+        def snapshot_version = ""
+        if (pro_file.exists()) {
+            Properties properties = new Properties()
+            properties.load(pro_file.newDataInputStream())
+            snapshot_version = properties.getProperty("snapshot_version")
+        }
+        if (snapshot_version) {
+            return "${export_version}-$snapshot_version-SNAPSHOT"
+        }
+        //unknown
+        return null
+    }
+    return "${export_version}"
+}
+
+/**
+ * 获取远端pom版本
+ * @parame prjPath* @return
+ */
+String pomRemoteVersion(prjPath) {
+    //如果没有配置local.properties使用远端最新的兜底
+    def pomPath = prjPath.replaceAll('[.]|:', "/")
+    def remotePomLatestVersion = remoteLatestVersion(pomPath)
+    return "$remotePomLatestVersion"
+}
+
+/**
+ * 获取snapshot的当前aar version的最新版本
+ * @return
+ */
+private String remoteLatestVersion(String path) {
+    def mavenUrl
+    if (snapshot.booleanValue()) {
+        mavenUrl = "http://10.184.158.167:8081/repository/maven-snapshots/"
+    } else {
+        mavenUrl = "http://10.184.158.167:8081/repository/maven-releases/"
+    }
+    def url = "${mavenUrl}$path/maven-metadata.xml"
+    def metadata
+    if (url.startsWith("http")) {
+        metadata = new XmlSlurper().parse(new URL(url).openStream())
+    } else {
+        if (file(url).exists()) {
+            metadata = new XmlSlurper().parse(file(url).newInputStream())
+        }
+    }
+    if (!metadata) {
+        return ""
+    }
+    //找出跟当前pom version匹配的列表
+    def versionLst = metadata.versioning.versions.version.findAll {
+        it.toString().startsWith("${export_version}")
+        println "<<version is ${it}"
+    }
+    versionLst = versionLst.sort()
+    versionLst.reverse(true)
+    def latest = versionLst.size() > 0 ? versionLst[versionLst.size() - 1] : ""
+    return latest
+}
+
+/**
+ * 如果是远端的，把snapshot小版本同步到本地
+ * @param version
+ */
+private void saveSnapShotRemoteVersionToLocal(String version) {
+    if (!version) {
+        return
+    }
+    File pro_file = file("$rootDir/scripts/snapshot.properties")
+    def smallVersion = version.substring("${export_version}".length()).replaceAll("SNAPSHOT|-", "")
+    println "> metadata smallVersion:${smallVersion}"
+    Properties properties = new Properties()
+    if (pro_file.exists()) {
+        properties.load(pro_file.newDataInputStream())
+    }
+    properties.setProperty("snapshot_version", smallVersion)
+    properties.store(pro_file.newDataOutputStream(), "# Automatically generated file. DO NOT MODIFY.\n#\n#")
+}
+
+/**
+ * 动态构建  原方式:     implementation project(":xx")
+ *         动态构建方式: implementation project3(":xx")
+ * @param path
+ * @return
+ */
+def project3(Object path) {
+    def conf = local_modules[path]
+    if (!conf) {
+        return path
+    }
+    if (conf.useSource) {
+        println " >>>>> 【动态构建】project3使用源码 project('${path}')}"
+        return project(":${path}")
+    }
+    def name = "${conf["groupId"]}:${conf["artifactId"]}"
+    println " >>>>> 【动态构建】 project3使用maven:${name}:${getPomVersion(name)}"
+    return "${name}:${getPomVersion(name)}"
+}
+

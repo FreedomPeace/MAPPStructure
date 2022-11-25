@@ -1,18 +1,16 @@
-plugins {
-    id 'com.android.application'
-}
-
+apply from: "$rootDir/gradleScript/lib_or_app.gradle"
 android {
     namespace 'com.framework.m_browser'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.framework.m_browser"
+        if (!rootProject.ext.local_modules["${project.path}"]["isLib"])
+            applicationId "com.framework.m_browser"
+
         minSdk 21
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -32,7 +30,7 @@ dependencies {
     implementation rootProject.ext.dependencies["gson"]
     implementation rootProject.ext.dependencies["rxjava"]
     implementation rootProject.ext.dependencies["rxandroid"]
-    implementation rootProject.ext.dependencies["dsbridge"]
+//    implementation rootProject.ext.dependencies["dsbridge"]
     implementation rootProject.ext.androidx["androidx-appcompat"]
     implementation rootProject.ext.androidx["android.material"]
     testImplementation 'junit:junit:4.13.2'

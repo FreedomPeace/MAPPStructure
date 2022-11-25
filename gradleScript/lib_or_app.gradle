@@ -1,0 +1,10 @@
+apply from: "$rootDir/gradleScript/lib_or_app_config.gradle"
+boolean isLib(){
+    return local_modules["${project.path}"]["isLib"]
+}
+if (isLib()) {
+    apply plugin: 'com.android.library'
+    apply from: "$rootDir/gradleScript/upload_maven.gradle"
+} else {
+    apply plugin: 'com.android.application'
+}
