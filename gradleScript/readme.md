@@ -18,11 +18,9 @@
 
   这个脚本主要是给各subProject用的。
 
-  ### dependencies_config.gradle 和
+  ### root_project_proxy.gradle
 
-  ### lib_or_app_config.gradle
-
-  这两个脚本是所有模块公用的属性配置，所以放在RootProject的【**build.gradle** 】文件中。
+  这个脚本是所有模块公用的属性配置，所以放在RootProject的【**build.gradle** 】文件中，这个只是一个代理的持有者。
 
   
 
