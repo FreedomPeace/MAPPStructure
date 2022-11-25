@@ -10,11 +10,11 @@
 
 - **upload_maven.gradle**  依赖脚本【**upload_maven_config.gradle**】配置，用来上传SDK到指定的maven库的。
 
-- **lib_or_app.gradle**   依赖脚本【**lib_or_app_config.gradle**】和【**upload_maven.gradle**】，来配置各个module是APP还是Lib模块，如果是Lib模块，就应用【**upload_maven.gradle**】这个脚本。
+- **sub_project_proxy.gradle**   依赖脚本【**lib_or_app_config.gradle**】和【**upload_maven.gradle**】，来配置各个module是APP还是Lib模块，如果是Lib模块，就应用【**upload_maven.gradle**】这个脚本。
 
   ## 脚本的使用
 
-  ### **lib_or_app.gradle**
+  ### **sub_project_proxy.gradle**
 
   这个脚本主要是给各subProject用的。
 

@@ -1,4 +1,4 @@
-apply from: "$rootDir/gradleScript/lib_or_app.gradle"
+apply from: "$rootDir/gradleScript/sub_project_proxy.gradle"
 android {
     namespace 'com.framework.network_api'
     compileSdk 32
