@@ -1,34 +1,20 @@
 apply from: "$rootDir/gradleScript/sub_project_proxy.gradle"
 android {
-    namespace 'com.framework.im_core_base'
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    defaultConfig {
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-        if (!rootProject.ext.local_modules["${project.path}"]["isLib"])
-            applicationId "com.framework.im_core_base"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug{
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+
 }
 
 dependencies {
-
-    implementation rootProject.ext.androidx["androidx-appcompat"]
-    implementation rootProject.ext.androidx["android.material"]
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    //当前模块特有的依赖包
+    implementation rootProject.ext.dependencies["rxjava"]
 }

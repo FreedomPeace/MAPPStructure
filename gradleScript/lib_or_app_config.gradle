@@ -2,21 +2,45 @@ ext {
     local_modules = [
             ":library_self_tool:im_core_base"        : [
                     "isLib": true,
+                    "applicationId": "com.framework.im_core_base",
+                    "versionCode": 1,
+                    "versionName": "1.0",
             ]
             , ":library_self_tool:network_api"       : [
             "isLib": false,
+            "applicationId": "com.framework.network_api",
+            "versionCode": 1,
+            "versionName": "1.0",
     ]
             , ":library_self_tool:upload_log_api"    : [
             "isLib": false,
+            "applicationId": "com.framework.upload_log_api",
+            "versionCode": 1,
+            "versionName": "1.0",
     ]
             , ":library_self_tool:im_ui_kit"         : [
             "isLib": false,
+            "applicationId": "com.framework.im_ui_kit",
+            "versionCode": 1,
+            "versionName": "1.0",
     ]
             , ":m_common_interface_api:m_browser_api": [
             "isLib": false,
+            "applicationId": "com.framework.m_browser_api",
+            "versionCode": 1,
+            "versionName": "1.0",
     ]
             , ":m_business_module:m_browser"         : [
+            "isLib": true,
+            "applicationId": "com.framework.m_browser",
+            "versionCode": 1,
+            "versionName": "1.0",
+    ]
+            , ":test"         : [
             "isLib": false,
+            "applicationId": "com.framework.test",
+            "versionCode": 1,
+            "versionName": "1.0",
     ]
     ]
 
