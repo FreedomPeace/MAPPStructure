@@ -1,12 +1,9 @@
 ext {
-    //上传到本地repo，如果是true上传本地
-    local = true
     //是否使用snapshot
     snapshot = true
-    url_release = "http://10.184.158.16:8081/repository/maven-releases/"
-    url_snapshot = "http://10.184.158.16:8081/repository/maven-snapshots/"
+    url_release = "http://10.184.158.167:8081/repository/maven-releases/"
+    url_snapshot = "http://10.184.158.167:8081/repository/maven-snapshots/"
     project3 = this.&project3
-    getPomVersion = this.&getPomVersion
     pomLocalVersion = this.&pomLocalVersion
     //统一版本号
     export_version = "2.0.9"
@@ -65,9 +62,53 @@ ext {
     ]
 }
 
+/**
+ * 本地pom的版本
+ * @return
+ */
+String pomLocalVersion() {
+    println ">>pomLocalVersion ${export_version}"
+    if (snapshot.booleanValue()) {
+        File pro_file = file("$rootDir/gradleScript/snapshot.properties")
+        def snapshot_version = ""
+        if (pro_file.exists()) {
+            Properties properties = new Properties()
+            properties.load(pro_file.newDataInputStream())
+            snapshot_version = properties.getProperty("snapshot_version")
+        }
+        if (snapshot_version) {
+            return "${export_version}-$snapshot_version-SNAPSHOT"
+        }
+        //unknown
+        println ">>pomLocalVersion unknown"
+        return null
+    }
+    return "${export_version}"
+}
 
 /**
- * 返回当前版本
+ *如果【local_modules_useSource】属性配置的是true ,表示编译用的是源码，否则用的是maven的版本
+ * 动态构建  原方式:     implementation project(":xx")
+ *         动态构建方式: implementation project3(":xx")
+ * @param path
+ * @return
+ */
+def project3(Object path) {
+    def conf = local_modules[path]
+    if (!conf) {
+        return path
+    }
+    if (conf.useSource) {
+        println " >>>>> 【动态构建】project3使用源码 project('${path}')}"
+        return project(":${path}")
+    }
+    def name = "${conf["groupId"]}:${conf["artifactId"]}"
+    println " >>>>> 【动态构建】 project3使用maven:${name}:${getPomVersion(name)}"
+    return "${name}:${getPomVersion(name)}"
+}
+
+/**
+ * 返回当前版本, 如果本地有版本信息，直接取，反之取服务器保存上的版本。
  */
 String getPomVersion(prjPath) {
     def localVersion = pomLocalVersion()
@@ -80,29 +121,6 @@ String getPomVersion(prjPath) {
     }
     return remotePomLatestVersion
 }
-
-/**
- * 本地pom的版本
- * @return
- */
-String pomLocalVersion() {
-    if (snapshot.booleanValue()) {
-        File pro_file = file("$rootDir/scripts/snapshot.properties")
-        def snapshot_version = ""
-        if (pro_file.exists()) {
-            Properties properties = new Properties()
-            properties.load(pro_file.newDataInputStream())
-            snapshot_version = properties.getProperty("snapshot_version")
-        }
-        if (snapshot_version) {
-            return "${export_version}-$snapshot_version-SNAPSHOT"
-        }
-        //unknown
-        return null
-    }
-    return "${export_version}"
-}
-
 /**
  * 获取远端pom版本
  * @parame prjPath* @return
@@ -121,9 +139,9 @@ String pomRemoteVersion(prjPath) {
 private String remoteLatestVersion(String path) {
     def mavenUrl
     if (snapshot.booleanValue()) {
-        mavenUrl = "http://10.184.158.167:8081/repository/maven-snapshots/"
+        mavenUrl = url_release
     } else {
-        mavenUrl = "http://10.184.158.167:8081/repository/maven-releases/"
+        mavenUrl = url_snapshot
     }
     def url = "${mavenUrl}$path/maven-metadata.xml"
     def metadata
@@ -156,7 +174,7 @@ private void saveSnapShotRemoteVersionToLocal(String version) {
     if (!version) {
         return
     }
-    File pro_file = file("$rootDir/scripts/snapshot.properties")
+    File pro_file = file("$rootDir/gradleScript/snapshot.properties")
     def smallVersion = version.substring("${export_version}".length()).replaceAll("SNAPSHOT|-", "")
     println "> metadata smallVersion:${smallVersion}"
     Properties properties = new Properties()
@@ -165,25 +183,5 @@ private void saveSnapShotRemoteVersionToLocal(String version) {
     }
     properties.setProperty("snapshot_version", smallVersion)
     properties.store(pro_file.newDataOutputStream(), "# Automatically generated file. DO NOT MODIFY.\n#\n#")
-}
-
-/**
- * 动态构建  原方式:     implementation project(":xx")
- *         动态构建方式: implementation project3(":xx")
- * @param path
- * @return
- */
-def project3(Object path) {
-    def conf = local_modules[path]
-    if (!conf) {
-        return path
-    }
-    if (conf.useSource) {
-        println " >>>>> 【动态构建】project3使用源码 project('${path}')}"
-        return project(":${path}")
-    }
-    def name = "${conf["groupId"]}:${conf["artifactId"]}"
-    println " >>>>> 【动态构建】 project3使用maven:${name}:${getPomVersion(name)}"
-    return "${name}:${getPomVersion(name)}"
 }
 
