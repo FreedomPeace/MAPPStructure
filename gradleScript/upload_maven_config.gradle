@@ -1,10 +1,13 @@
+//def url_release = "http://http://192.168.0.169:8081/repository/maven-releases/"
+//def url_snapshot = "http://http://192.168.0.169:8081/repository/maven-snapshots/"
+
 ext {
     //是否使用snapshot
     snapshot = true
-    url_release = "http://10.184.158.167:8081/repository/maven-releases/"
-    url_snapshot = "http://10.184.158.167:8081/repository/maven-snapshots/"
+    url_release = "http://localhost:8081/repository/maven-releases/"
+    url_snapshot = "http://localhost:8081/repository/maven-snapshots/"
     project3 = this.&project3
-    pomLocalVersion = this.&pomLocalVersion
+    snapshotPomLocalVersion = this.&snapshotPomLocalVersion
     //统一版本号
     export_version = "2.0.9"
     /**
@@ -63,10 +66,10 @@ ext {
 }
 
 /**
- * 本地pom的版本
+ * 本地snapshot
  * @return
  */
-String pomLocalVersion() {
+String snapshotPomLocalVersion() {
     println ">>pomLocalVersion ${export_version}"
     if (snapshot.booleanValue()) {
         File pro_file = file("$rootDir/gradleScript/snapshot.properties")
@@ -85,6 +88,7 @@ String pomLocalVersion() {
     }
     return "${export_version}"
 }
+
 
 /**
  *如果【local_modules_useSource】属性配置的是true ,表示编译用的是源码，否则用的是maven的版本

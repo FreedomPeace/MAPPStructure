@@ -14,5 +14,7 @@ android {
 
 dependencies {
     //当前模块特有的依赖包
-//    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["arouter-api"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 }

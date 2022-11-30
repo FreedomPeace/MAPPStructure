@@ -2,12 +2,14 @@ apply from: "$rootDir/gradleScript/root_project_proxy.gradle"
 apply plugin: 'com.alibaba.arouter'
 
 buildscript {
-
+    def url_release = "http://http://192.168.0.169:8081/repository/maven-releases/"
+    def url_snapshot = "http://http://192.168.0.169:8081/repository/maven-snapshots/"
     repositories {
         mavenCentral()
         google()
-        mavenCentral()
         maven { url 'https://jitpack.io' }
+//        maven { url url_snapshot }
+//        maven { url url_release }
     }
     ext.kotlin_version = '1.4.10'
     dependencies {
@@ -18,11 +20,15 @@ buildscript {
     }
 }
 allprojects {
+    def url_release = "http://http://192.168.0.169:8081/repository/maven-releases/"
+    def url_snapshot = "http://http://192.168.0.169:8081/repository/maven-snapshots/"
+
     repositories {
-        mavenCentral()
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+//        maven { url url_snapshot }
+//        maven { url url_release }
     }
     buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
 }

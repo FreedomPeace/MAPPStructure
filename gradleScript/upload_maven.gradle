@@ -14,7 +14,7 @@ afterEvaluate {
                 "universalAAR": false
         ]
         def local_module = local_modules["${project.path}"]
-        pomMaps.version = snapshot.booleanValue()  ? pomLocalVersion() : export_version
+        pomMaps.version = snapshot.booleanValue()  ? snapshotPomLocalVersion() : export_version
         if (local_module["packaging"]?.trim()) {
             pomMaps.packaging = local_module["packaging"]
         }
@@ -52,7 +52,6 @@ afterEvaluate {
                     password 'admin123'
                 }
             }
-            //‼️snapshot不能传，使用老的maven插件上传
             maven {
                 name = "snapshot"
                 url = url_snapshot
