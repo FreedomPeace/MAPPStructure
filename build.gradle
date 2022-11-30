@@ -4,7 +4,6 @@ apply plugin: 'com.alibaba.arouter'
 buildscript {
 
     repositories {
-        mavenCentral()
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
@@ -21,7 +20,6 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-        mavenCentral()
         maven { url 'https://jitpack.io' }
     }
     buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
