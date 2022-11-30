@@ -2,11 +2,11 @@ apply from: "$rootDir/gradleScript/config.gradle"
 apply plugin: 'com.alibaba.arouter'
 
 buildscript {
-
     repositories {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven { url 'http://localhost:8081/repository/maven-snapshots/' }
     }
     ext.kotlin_version = '1.4.10'
     dependencies {
@@ -21,6 +21,7 @@ allprojects {
         mavenCentral()
         google()
         maven { url 'https://jitpack.io' }
+        maven { url 'http://localhost:8081/repository/maven-snapshots/' }
     }
     buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
 }

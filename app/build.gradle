@@ -29,6 +29,7 @@ android {
 dependencies {
     implementation rootProject.ext.androidx["androidx-appcompat"]
     implementation rootProject.ext.androidx["android.material"]
+    implementation 'com.framework.im_core_base:compont:2.0.9-11011123-SNAPSHOT'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
