@@ -4,13 +4,16 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="delegatedBuild" value="true" />
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/library_self_tool" />
             <option value="$PROJECT_DIR$/library_self_tool/im_core_base" />
             <option value="$PROJECT_DIR$/library_self_tool/im_ui_kit" />
@@ -23,6 +26,7 @@
             <option value="$PROJECT_DIR$/m_business_module/m_browser" />
             <option value="$PROJECT_DIR$/m_common_interface_api" />
             <option value="$PROJECT_DIR$/m_common_interface_api/m_browser_api" />
+            <option value="$PROJECT_DIR$/plugin" />
             <option value="$PROJECT_DIR$/test" />
           </set>
         </option>

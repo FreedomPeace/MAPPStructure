@@ -2,33 +2,34 @@ apply from: "$rootDir/gradleScript/root_project_proxy.gradle"
 apply plugin: 'com.alibaba.arouter'
 
 buildscript {
-    def url_release = "http://http://192.168.0.169:8081/repository/maven-releases/"
-    def url_snapshot = "http://http://192.168.0.169:8081/repository/maven-snapshots/"
     repositories {
         mavenCentral()
         google()
         maven { url 'https://jitpack.io' }
-//        maven { url url_snapshot }
-//        maven { url url_release }
+        maven {
+            url = uri("http://localhost:8081/repository/maven-releases/")
+        }
+        maven {
+            url = uri("http://localhost:8081/repository/maven-snapshots/")
+        }
     }
     ext.kotlin_version = '1.4.10'
+    ext.greeting_plugin_version = "1.4.3-SNAPSHOT"
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // Replace with the latest version
         classpath "com.alibaba:arouter-register:1.0.2"
         classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath "com.example:plugin:${project.ext.greeting_plugin_version}"
     }
 }
+
 allprojects {
-    def url_release = "http://http://192.168.0.169:8081/repository/maven-releases/"
-    def url_snapshot = "http://http://192.168.0.169:8081/repository/maven-snapshots/"
 
     repositories {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-//        maven { url url_snapshot }
-//        maven { url url_release }
     }
     buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
 }

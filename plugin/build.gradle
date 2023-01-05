@@ -1,0 +1,92 @@
+//Task 'clean' not found in root project 'buildSrc'.
+plugins {
+    //Applying the Maven Publish Plugin
+    id 'maven-publish'
+    id 'signing'
+    id 'base'
+    id 'groovy'
+    id 'java-gradle-plugin'
+}
+group = "com.example"
+version = project.property("greeting_plugin_version")
+//apply plugin: 'java-gradle-plugin'
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:3.0.8'
+}
+//A build for a custom plugin
+gradlePlugin {
+    // Define the plugin
+    plugins {
+        greet {
+            id = 'org.example.greeting'
+            implementationClass = 'com.example.plugin.GreetingPlugin'
+        }
+    }
+}
+
+publishing {
+    publications {
+        greet(MavenPublication) {
+            groupId = 'org.gradle.sample'
+            artifactId = 'library'
+            from components.java
+            //Customizing the POM file
+//            pom {
+//                name = 'My Library'
+//                description = 'A concise description of my library'
+//                url = 'http://www.example.com/library'
+//                properties = [
+//                        myProp          : "value",
+//                        "prop.with.dots": "anotherValue"
+//                ]
+//                licenses {
+//                    license {
+//                        name = 'The Apache License, Version 2.0'
+//                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id = 'johnd'
+//                        name = 'John Doe'
+//                        email = 'john.doe@example.com'
+//                    }
+//                }
+//                scm {
+//                    connection = 'scm:git:git://example.com/my-library.git'
+//                    developerConnection = 'scm:git:ssh://example.com/my-library.git'
+//                    url = 'http://example.com/my-library/'
+//                }
+//            }
+        }
+    }
+    repositories {
+        maven {
+            name = "release"
+            allowInsecureProtocol = true
+            credentials {
+                username 'admin'
+                password 'admin123'
+            }
+            // change to point to your repo, e.g. http://my.org/repo
+            def releasesRepoUrl = "http://localhost:8081/repository/maven-releases/"
+            def snapshotsRepoUrl = "http://localhost:8081/repository/maven-snapshots/"
+//            def releasesRepoUrl = layout.buildDirectory.dir('repos/releases')
+//            def snapshotsRepoUrl = layout.buildDirectory.dir('repos/snapshots')
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            // Configuring repository URL based on project property
+//            url = project.hasProperty('release') ? releasesRepoUrl : snapshotsRepoUrl
+        }
+        maven {
+            name = "Repo"
+            url = "$rootDir/repo"
+        }
+    }
+}
+signing {
+    sign publishing.publications.greet
+}

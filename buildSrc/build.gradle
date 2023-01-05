@@ -1,0 +1,14 @@
+//Task 'clean' not found in root project 'buildSrc'.
+plugins {
+    id 'base'
+    id 'groovy'
+//    id 'java-gradle-plugin'
+}
+apply plugin: 'java-gradle-plugin'
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+dependencies {
+//    compile 'org.codehaus.groovy:groovy-all:3.0.8'
+}
