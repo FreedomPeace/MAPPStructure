@@ -23,7 +23,7 @@ gradlePlugin {
     plugins {
         greet {
             id = 'org.example.greeting'
-            implementationClass = 'com.example.plugin.GreetingPlugin'
+            implementationClass = 'com.example.GreetingPlugin'
         }
     }
 }

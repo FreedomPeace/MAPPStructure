@@ -1,4 +1,4 @@
-package com.example.plugin
+package com.example
 
 
 import org.gradle.api.Plugin

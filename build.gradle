@@ -14,7 +14,7 @@ buildscript {
         }
     }
     ext.kotlin_version = '1.4.10'
-    ext.greeting_plugin_version = "1.4.3-SNAPSHOT"
+    ext.greeting_plugin_version = "1.4.4-SNAPSHOT"
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // Replace with the latest version
@@ -23,6 +23,7 @@ buildscript {
         classpath "com.example:plugin:${project.ext.greeting_plugin_version}"
     }
 }
+apply plugin: 'org.example.greeting'
 
 allprojects {
 
