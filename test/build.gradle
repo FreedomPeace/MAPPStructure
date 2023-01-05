@@ -1,5 +1,5 @@
 apply from: "$rootDir/gradleScript/sub_project_proxy.gradle"
-//apply plugin: 'org.example.greeting'
+apply plugin: 'org.example.greeting'
 android {
     defaultConfig{
 
