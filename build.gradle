@@ -14,16 +14,20 @@ buildscript {
         }
     }
     ext.kotlin_version = '1.4.10'
-    ext.greeting_plugin_version = "1.4.4-SNAPSHOT"
+    ext.greeting_plugin_version = "1.4.8-SNAPSHOT"
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // Replace with the latest version
         classpath "com.alibaba:arouter-register:1.0.2"
         classpath 'com.android.tools.build:gradle:4.2.2'
-        classpath "com.example:plugin:${project.ext.greeting_plugin_version}"
+        if (!System.getProperty("isPublishPlugin")) {
+            classpath "com.example:plugin:${project.ext.greeting_plugin_version}"
+        }
     }
 }
-apply plugin: 'org.example.greeting'
+if (!System.getProperty("isPublishPlugin")){
+    apply plugin: 'org.example.greeting'
+}
 
 allprojects {
 

@@ -18,6 +18,8 @@ dependencies {
     compile 'org.codehaus.groovy:groovy-all:3.0.8'
 }
 //A build for a custom plugin
+//command publish plugin
+//gradelw.bat  plugin:publishPluginMavenPublicationToReleaseRepository
 gradlePlugin {
     // Define the plugin
     plugins {
