@@ -7,6 +7,6 @@ import org.gradle.api.Project
 class GreetingPluginLocal implements Plugin<Project> {
     @Override
     void apply(Project project) {
-        println("greeting hi $project.name")
+        println("greeting hi local script $project.name")
     }
 }

@@ -1,0 +1,11 @@
+buildscript {
+
+}
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+    buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
+}

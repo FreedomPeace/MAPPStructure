@@ -1,3 +1,5 @@
+import com.example.GreetingPluginLocal
+
 apply from: "$rootDir/gradleScript/root_project_proxy.gradle"
 apply plugin: 'com.alibaba.arouter'
 
@@ -7,34 +9,30 @@ buildscript {
         google()
         maven { url 'https://jitpack.io' }
         maven {
-            url = uri("http://localhost:8081/repository/maven-releases/")
+//            url = uri("http://localhost:8081/repository/maven-releases/")
+            url 'http://localhost:8081/repository/maven-releases/'
         }
         maven {
             url = uri("http://localhost:8081/repository/maven-snapshots/")
         }
     }
     ext.kotlin_version = '1.4.10'
-    ext.greeting_plugin_version = "1.4.8-SNAPSHOT"
+    ext.greeting_plugin_version = "1.5.1-SNAPSHOT"
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // Replace with the latest version
         classpath "com.alibaba:arouter-register:1.0.2"
         classpath 'com.android.tools.build:gradle:4.2.2'
-        if (!System.getProperty("isPublishPlugin")) {
+       def isPublishPlugin = System.getProperty("isPublishPlugin").toBoolean()
+        println(!isPublishPlugin)
+        if (!isPublishPlugin) {
             classpath "com.example:plugin:${project.ext.greeting_plugin_version}"
         }
     }
 }
-if (!System.getProperty("isPublishPlugin")){
+if (!System.getProperty("isPublishPlugin").toBoolean()){
     apply plugin: 'org.example.greeting'
 }
 
-allprojects {
-
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
-    }
-    buildDir = new File(rootDir, "gradle-build/${path.replaceAll(':', '/')}")
-}
+apply plugin: GreetingPluginLocal
+apply from: "$rootDir/buildSrc/allProjectConfig.gradle"
