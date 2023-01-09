@@ -1,5 +1,5 @@
 plugins{
-//    id 'org.example.greeting'
+    id 'org.example.greeting'
 }
 apply from: "$rootDir/gradleScript/sub_project_proxy.gradle"
 android {
