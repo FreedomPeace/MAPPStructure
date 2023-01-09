@@ -17,7 +17,7 @@ buildscript {
         }
     }
     ext.kotlin_version = '1.4.10'
-    ext.greeting_plugin_version = "1.5.1-SNAPSHOT"
+    ext.greeting_plugin_version = "1.5.2-SNAPSHOT"
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // Replace with the latest version
@@ -26,7 +26,7 @@ buildscript {
        def isPublishPlugin = System.getProperty("isPublishPlugin").toBoolean()
         println(!isPublishPlugin)
         if (!isPublishPlugin) {
-            classpath "com.example:plugin:${project.ext.greeting_plugin_version}"
+            classpath "com.example:greetingPlugin:${project.ext.greeting_plugin_version}"
         }
     }
 }
